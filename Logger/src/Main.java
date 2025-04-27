@@ -5,13 +5,13 @@ public class Main {
         LogManager logManager = LogManager.getLogManager();
         Logger logger = logManager.getLogger("MyLogger");
 
-        logger.addAppender(new ConsoleAppender());
-        try {
-            logger.addAppender(new FileAppender("application.log"));
-            logger.addAppender(new RollingFileAppender("rolling.log", 128 * 128, 5));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // logger.addAppender(new ConsoleAppender());
+        // try {
+        //     logger.addAppender(new FileAppender("application.log"));
+        //     logger.addAppender(new RollingFileAppender("rolling.log", 128 * 128, 5));
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
 
         logger.debug("This is a debug message");
         logger.info("This is an info message");

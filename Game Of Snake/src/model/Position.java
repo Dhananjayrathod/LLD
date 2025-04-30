@@ -37,13 +37,24 @@ public class Position {
         return 31 * x + y;
     }
 
-    public Position getNextPosition(Direction direction) {
+    public Position getNextPosition(Direction direction, int boardWidth, int boardHeight) {
+        int newX = x;
+        int newY = y;
+
         switch (direction) {
-            case UP:  return new Position(x, y - 1);
-            case DOWN: return new Position(x, y + 1);
-            case LEFT: return new Position(x-1, y);
-            case RIGHT: return new Position(x+1, y);
-            default: return this;
+            case UP:
+                newY = (y - 1 + boardHeight) % boardHeight;
+                break;
+            case DOWN:
+                newY = (y + 1) % boardHeight;
+                break;
+            case LEFT:
+                newX = (x - 1 + boardWidth) % boardWidth;
+                break;
+            case RIGHT:
+                newX = (x + 1) % boardWidth;
+                break;
         }
+        return new Position(newX, newY);
     }
 }

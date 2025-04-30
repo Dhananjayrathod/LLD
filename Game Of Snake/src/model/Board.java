@@ -14,11 +14,6 @@ public class Board {
         this.width = width;
     }
 
-    public boolean isOutOfBounds(Position position) {
-        return position.getX() < 0 || position.getX() >= width
-                || position.getY() < 0 || position.getY() >= height;
-    }
-
     public int getHeight() {
         return height;
     }

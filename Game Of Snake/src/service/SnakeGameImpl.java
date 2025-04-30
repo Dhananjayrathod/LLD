@@ -19,7 +19,7 @@ public class SnakeGameImpl implements SnakeGame{
 
     public SnakeGameImpl(int height, int width) {
         this.board = new Board(height, width);
-        this.snake = new Snake(new Position(0, 2), 5);
+        this.snake = new Snake(new Position(0, 2), 5, this.board);
         this.gameOver = false;
     }
 
@@ -33,7 +33,7 @@ public class SnakeGameImpl implements SnakeGame{
         snake.move(snakeDirection);
 
         Position head = snake.getHead();
-        if (board.isOutOfBounds(head) || snake.collidesWithSelf()) {
+        if (snake.collidesWithSelf()) {
             gameOver = true;
         }
     }

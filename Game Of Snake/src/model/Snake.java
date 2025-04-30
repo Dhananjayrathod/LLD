@@ -17,8 +17,10 @@ public class Snake {
     private int growthRate;
     private int moveCounter;
     private boolean pendingGrowth;
+    private Board board;
 
-    public Snake(Position intialPosition, int growthRate) {
+    public Snake(Position intialPosition, int growthRate, Board board) {
+        this.board = board;
         this.body = new LinkedList<>();
         this.currentDirection = Direction.LEFT;
 
@@ -50,7 +52,7 @@ public class Snake {
 
         currentDirection = direction;
 
-        Position newHead = getHead().getNextPosition(direction);
+        Position newHead = getHead().getNextPosition(direction, board.getWidth(), board.getHeight());
 
         body.addFirst(newHead);
 

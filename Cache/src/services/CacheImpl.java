@@ -23,9 +23,7 @@ public class CacheImpl<K, V> implements Cache<K, V> {
     @Override
     public V get(K key) {
         if (expiryManager.isExpired(key)) {
-            storage.remove(key);
-            evictionPolicy.removeKey(key);
-            expiryManager.remove(key);
+            remove(key);
             return null;
         }
 
@@ -59,6 +57,8 @@ public class CacheImpl<K, V> implements Cache<K, V> {
     @Override
     public void remove(K key) {
          storage.remove(key);
+         evictionPolicy.removeKey(key);
+         expiryManager.remove(key);
     }
 
     @Override
